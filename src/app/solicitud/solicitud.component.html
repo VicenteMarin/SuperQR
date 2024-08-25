@@ -1,0 +1,71 @@
+<div class="col-lg-12 col-sm-6">
+  <mat-card class="cardWithShadow">
+    <mat-card-content class="p-24">
+      <mat-card-title>Seleccione solicitud</mat-card-title>
+      <form class="row m-t-24" [formGroup]="peopleFormGroup">
+        <mat-form-field>
+          <mat-select placeholder="Seleccione solicitud" [formControl]="peopleFormGroup.controls.personControl"
+            required [(value)]="selected">
+            <mat-option>--</mat-option>
+            <mat-option *ngFor="let p of solicitudes" [value]="p.sid">
+              {{p.sid}} - {{ p.query}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="peopleFormGroup.controls.personControl.hasError('required')">Por favor, seleccione
+            una
+            solicitud</mat-error>
+        </mat-form-field>
+      </form>
+      <div class="col-12">
+        <button mat-raised-button color="primary" type="submit" (click)="getSolicitud(selected)"
+          [disabled]="!peopleFormGroup.valid">Enviar</button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  <mat-card class="cardWithShadow">
+    <br>
+    <button mat-raised-button color="primary" type="button" (click)="addSolicitud()">Añadir solicitud</button>
+  </mat-card>
+</div>
+
+<div class="col-12" [hidden]="!showData">
+  <mat-card class="cardWithShadow">
+    <mat-card-content class="p-24">
+      <div class="row">
+        <div class="col-12">
+          <h1>Datos</h1>
+        </div>
+        <div class="col-12">
+          <ul>
+            <li>
+              <h2>Informacion solicitud:</h2>
+            </li>
+            <li>
+              <ul>
+                <li>
+                  <h3>ID solicitud: {{person.sid}}</h3>
+                </li>
+                <li>
+                  <h3>Correo: {{ person.correo }}</h3>
+                </li>
+                <li>
+                  <h3>Query: {{ person.query }}</h3>
+                </li>
+                <li>
+                  <h3>Fecha solicitud: {{ person.fecha }}</h3>
+                </li>
+                <li>
+                  <h3>ID Grupo objetivo: {{ person.nGrupo }}</h3>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <button color="accent" 
+                mat-raised-button 
+                (click)="deleteSolicitud(person)"
+                >Eliminar</button>
+    </mat-card-content>
+  </mat-card>
+</div>
