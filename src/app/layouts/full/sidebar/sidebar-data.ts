@@ -7,7 +7,7 @@ export const navItems: NavItem[] = [
   {
     displayName: 'Ver empresa',
     iconName: 'key',
-    route: '/empresa'
+    route: ''
   },
   {
     displayName: 'Administrar solicitudes',
