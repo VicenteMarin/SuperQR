@@ -5,7 +5,7 @@ export const navItems: NavItem[] = [
     navCap: 'Home',
   },
   {
-    displayName: 'Ver empresa',
+    displayName: 'Home',
     iconName: 'key',
     route: ''
   },
